@@ -126,3 +126,35 @@ for (const cuenta of carrito) {
     console.log("Producto: " + cuenta.prenda + "\nPrecio: " + cuenta.precio)
 
 }
+
+// Genero un numero de compra
+function codigoUsuario(min, max) {
+    return (Math.random() * (max - min) + min).toFixed();
+}
+
+// Hago un mapa para el sort de Menor a mayor
+const precios = productos.map((el) => {
+    return {
+        precio: el.precio,
+        prenda: el.prenda
+    }
+}
+)
+
+// Hago un mapa para el sort de Mayor a menor
+const precios2 = productos.map((el) => {
+    return {
+        precio: el.precio,
+        producto: el.producto
+    }
+}
+)
+
+
+// Debug de Lista con precios de Menor a Mayor 
+console.log("Precios Menor a Mayor:")
+console.log(precios.sort((a, b) => a.precio - b.precio))
+
+// Debug de Lista con precios de Mayor a Menor 
+console.log("Precios Mayor a Menor:")
+console.log(precios2.sort((a, b) => b.precio - a.precio)) 
