@@ -1,3 +1,8 @@
+//Interactuar con HTML
+
+// Busco la propiedad del display
+let carritoLista = document.getElementById("carritoLista").style.display = "none"
+
 const productos = [
     { id: 1, prenda: "Remera Boca", precio: 150 },
     { id: 2, prenda: "Remera River", precio: 150 },
@@ -26,26 +31,36 @@ case 1:
     console.log("Has seleccionado  " + producto + "Remera River")
     total = total + productos[0].precio;
     carrito.push(productos[0]);
+    abrirCarrito()
+    sumarAlCarrito (0)
     break;
 case 2:
     console.log("Has seleccionado  " + producto + "Campera River")
     total = total + productos[0].precio;
     carrito.push(productos[0]);
+    abrirCarrito()
+    sumarAlCarrito (1)
     break;
 case 3:
     console.log("Has seleccionado " + producto + "Campera Boca")
     total = total + productos[0].precio;
     carrito.push(productos[0]);
+    abrirCarrito()
+    sumarAlCarrito (2)
     break;
 case 4:
     console.log("Has seleccionado " + producto + "Remera seleccion Argentina")
     total = total + productos[0].precio;
     carrito.push(productos[0]);
+    abrirCarrito()
+    sumarAlCarrito (3)
     break;
 case 5:
     console.log("Has seleccionado " + producto + "Jogging Boca")
     total = total + productos[0].precio;
     carrito.push(productos[0]);
+    abrirCarrito()
+    sumarAlCarrito (4)
     break;
 
 default:
@@ -65,26 +80,32 @@ switch (producto) {
         console.log("Has seleccionado el producto " + producto + ",'" + productos[0].prenda + "': $" + productos[0].precio)
             total = total + productos[0].precio;
             carrito.push(productos[0]);
+            sumarAlCarrito (0)
+
         break;
     case 2:
         console.log("Has seleccionado el producto " + producto + ",'" + productos[0].prenda + "': $" + productos[0].precio)
             total = total + productos[0].precio;
             carrito.push(productos[0]);
+            sumarAlCarrito (1)
         break;
     case 3:
         console.log("Has seleccionado el producto " + producto + ",'" + productos[0].prenda + "': $" + productos[0].precio)
         total = total + productos[0].precio;
         carrito.push(productos[0]);
+        sumarAlCarrito (2)
         break;
     case 4:
         console.log("Has seleccionado el producto " + producto + ",'" + productos[0].prenda + "': $" + productos[0].precio)
             total = total + productos[0].precio;
             carrito.push(productos[0]);
+            sumarAlCarrito (3)
         break;
     case 5:
         console.log("Has seleccionado el producto " + producto + ",'" + productos[0].prenda + "': $" + productos[0].precio)
             total = total + productos[0].precio;
             carrito.push(productos[0]);
+            sumarAlCarrito (4)
         break;
     
     default:
@@ -111,7 +132,10 @@ while (eliminacion) {
     if (index != -1) {
         total = total - carrito[index].precio
         carrito.splice(index, 1)
+        document.getElementById.apply("carritoLista").removeChild(document.getElementById("carritoLista").children[index])
     }
+
+
     /* Si elige un numero que no tiene prenda */
     else {
         alert("¡Ese producto no esta en su carrito!")
@@ -120,6 +144,14 @@ while (eliminacion) {
     // Pregunto si quiere eliminar el producto 
     eliminacion = confirm("¿Desea eliminar otro producto?")
 }
+
+
+let precioTotal = document.createElement("h2")
+precioTotal.innerHTML = `Total (+IVA): ${iva(total)}`
+precioTotal.style.margin = "1rem"
+precioTotal.style.backgroundColor = "black"
+precioTotal.style.color = "white"
+document.getElementById("carritoLista").appendChild(precioTotal)
 
 //Precio final
 for (const cuenta of carrito) {
